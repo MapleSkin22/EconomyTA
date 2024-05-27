@@ -31,6 +31,7 @@ def handle_message(event):
 
     user_message = event.message.text
     reply_messages = search_and_extract_anser(all_data,user_message)
+    messages_to_reply = []
     for message in reply_messages:
         if determine_content_type(message)=="Image":
             line_bot_api.reply_message(event.reply_token, ImageSendMessage(original_content_url = message, preview_image_url= message ))
